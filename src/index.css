@@ -1,0 +1,99 @@
+@import "tailwindcss";
+
+/* ── Global scrollbar hide ── */
+*::-webkit-scrollbar { display: none; }        /* Chrome / Safari */
+* { scrollbar-width: none; -ms-overflow-style: none; } /* Firefox / IE */
+
+/* Hide scrollbar but allow scrolling */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;     /* Firefox */
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scaleIn {
+  from { transform: scale(0.9); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.2s ease-in-out;
+}
+
+.animate-scaleIn {
+  animation: scaleIn 0.2s ease-in-out;
+}
+
+.prose-content ul {
+  list-style-type: disc;
+  padding-left: 20px;
+}
+
+.prose-content ol {
+  list-style-type: decimal;
+  padding-left: 20px;
+}
+
+.prose-content li {
+  margin-bottom: 6px;
+}
+/* ── Rich Editor Fixes ── */
+.rich-editor-content {
+    word-wrap: break-word !important;
+    overflow-wrap: break-word !important;
+    white-space: pre-wrap !important;
+    word-break: break-word; /* Extra safety for horizontal growth */
+}
+
+/* ── Placeholder for contenteditable ── */
+[contenteditable]:empty:before {
+    content: attr(data-placeholder);
+    color: #9ca3af;
+    pointer-events: none;
+    display: block; /* Ensures it stays in place */
+}
+
+/* ── Custom Scrollbar for the Editor ── */
+/* Since you hide global scrollbars, we override it just for this class */
+.editor-scrollbar::-webkit-scrollbar {
+    display: block !important;
+    width: 6px;
+}
+.editor-scrollbar::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+.editor-scrollbar::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 10px;
+}
+.editor-scrollbar {
+    scrollbar-width: thin !important; /* For Firefox */
+    -ms-overflow-style: auto !important; /* For IE/Edge */
+}
+
+/* ── Interactive Cursor Styles ── */
+button:not(:disabled),
+a,
+[role="button"],
+select:not(:disabled),
+input[type="checkbox"]:not(:disabled),
+input[type="radio"]:not(:disabled),
+input[type="file"]:not(:disabled),
+label[for] {
+    cursor: pointer;
+}
+
+button:disabled,
+input:disabled,
+select:disabled,
+[disabled],
+.disabled {
+    cursor: not-allowed;
+}
